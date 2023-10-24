@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34202.233
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarshipSearchAPI", "WarshipSearchAPI\WarshipSearchAPI.csproj", "{A04A5D9C-E67A-45AC-A6E2-9D2C48AA49C3}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{356ADDB7-8DE3-4BD7-BA99-6AB95B836787}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A04A5D9C-E67A-45AC-A6E2-9D2C48AA49C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A04A5D9C-E67A-45AC-A6E2-9D2C48AA49C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A04A5D9C-E67A-45AC-A6E2-9D2C48AA49C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A04A5D9C-E67A-45AC-A6E2-9D2C48AA49C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{356ADDB7-8DE3-4BD7-BA99-6AB95B836787}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{356ADDB7-8DE3-4BD7-BA99-6AB95B836787}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{356ADDB7-8DE3-4BD7-BA99-6AB95B836787}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{356ADDB7-8DE3-4BD7-BA99-6AB95B836787}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4041EFB9-DB4B-47D5-BC60-149526C2C4E1}
+	EndGlobalSection
+EndGlobal

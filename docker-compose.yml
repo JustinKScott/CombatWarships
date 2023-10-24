@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+   warshipsearchapi:
+      image: ${DOCKER_REGISTRY-}warshipsearchapi
+      build:
+         context: .
+         dockerfile: WarshipSearchAPI/Dockerfile
+      ports:
+         - "8080:80" 
+      depends_on:
+         - warship_seq
+
+   warship_seq:
+      image: datalust/seq
+      ports:
+         - "8005:80"
+      environment:
+         - ACCEPT_EULA=Y
+ 
