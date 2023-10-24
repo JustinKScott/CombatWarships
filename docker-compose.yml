@@ -8,8 +8,14 @@ services:
          dockerfile: WarshipSearchAPI/Dockerfile
       ports:
          - "8080:80" 
+      environment:
+      - ConnectionStrings__DbConnection=Server=tcp:warships-sql.database.windows.net,1433;Initial Catalog=WarshipsDB;Persist Security Info=False;User ID=JustinScott;Password=1999Vette;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
       depends_on:
          - warship_seq
+       
+
+ 
+
 
    warship_seq:
       image: datalust/seq

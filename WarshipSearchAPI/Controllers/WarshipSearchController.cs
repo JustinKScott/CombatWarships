@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using WarshipSearchAPI.Data;
+using WarshipSearchAPI.Interfaces;
 
 namespace WarshipSearchAPI.Controllers
 {
@@ -6,25 +8,17 @@ namespace WarshipSearchAPI.Controllers
 	[Route("[controller]")]
 	public class WarshipSearchController : ControllerBase
 	{
-		private static readonly string[] Summaries = new[]
-		{
-		  "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-		};
+		private readonly IWarshipDatabase _database;
 
-		public WarshipSearchController()
+		public WarshipSearchController(IWarshipDatabase database)
 		{
+			_database = database;
 		}
 
 		[HttpGet(Name = "SearchWarships")]
-		public IEnumerable<WeatherForecast> Get()
+		public IEnumerable<Ship> Get()
 		{
-			return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-			{
-				Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-				TemperatureC = Random.Shared.Next(-20, 55),
-				Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-			})
-			.ToArray();
+			return _database.Ships.ToArray();
 		}
 	}
 }

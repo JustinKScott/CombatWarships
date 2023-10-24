@@ -1,4 +1,6 @@
 using Serilog;
+using WarshipSearchAPI.Data;
+using WarshipSearchAPI.Interfaces;
 using WarshipSearchAPI.Middleware;
 
 Log.Logger = new LoggerConfiguration()
@@ -10,12 +12,13 @@ Log.Logger = new LoggerConfiguration()
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.AddScoped<IWarshipDatabase, WarshipDatabase>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 
 builder.Services.AddLogging(loggingBuilder =>
 {
