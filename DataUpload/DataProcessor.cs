@@ -29,48 +29,48 @@ namespace DataUpload
                     throw new InvalidOperationException("No shipdata");
 
 
-                //Parallel.ForEach(shipData, (ship) =>
-                //{
-                //    WikiDataAnalyzer wiki = null;
-                //    if (!string.IsNullOrEmpty(ship.WikiLink))
-                //    {
-                //        wiki = new WikiDataAnalyzer(ship.WikiLink);
-                //    }
-                //    else
-                //    {
-                //        List<string> wikiUrls = new List<string>();
-                //        wikiUrls.AddRange(WikiFinder.FindWikiUrls(ship));
+            Parallel.ForEach(shipData, (ship) =>
+            {
+               WikiDataAnalyzer wiki = null;
+               if (!string.IsNullOrEmpty(ship.WikiLink))
+               {
+                  wiki = new WikiDataAnalyzer(ship.WikiLink);
+               }
+               else
+               {
+                  List<string> wikiUrls = new List<string>();
+                  wikiUrls.AddRange(WikiFinder.FindWikiUrls(ship));
 
-                //        foreach (var url in wikiUrls)
-                //        {
-                //            var potentialWiki = new WikiDataAnalyzer(url);
-                //            if (potentialWiki.ValidateShip(ship))
-                //            {
-                //                Console.WriteLine($"Found wiki for {ship.ClassName}");
-                //                ship.WikiLink = potentialWiki.Url;
-                //                wiki = potentialWiki;
-                //                break;
-                //            }
-                //        }
+                  foreach (var url in wikiUrls)
+                  {
+                     var potentialWiki = new WikiDataAnalyzer(url);
+                     if (potentialWiki.ValidateShip(ship))
+                     {
+                        Console.WriteLine($"Found wiki for {ship.ClassName}");
+                        ship.WikiLink = potentialWiki.Url;
+                        wiki = potentialWiki;
+                        break;
+                     }
+                  }
 
-                //        // No wiki article found.
-                //        if (wiki == null)
-                //            return;
-                //    }
-
-
-                //    ship.SpeedKnots = wiki.Speed;
-
-                //    var wikiArmor = wiki.Armor;
-                //    if (wikiArmor != null)
-                //    {
-                //        ship.Armor = wikiArmor;
-                //    }
-                //});
+                  // No wiki article found.
+                  if (wiki == null)
+                     return;
+               }
 
 
+               ship.SpeedKnots = wiki.Speed;
 
-                await dropDb;
+               var wikiArmor = wiki.Armor;
+               if (wikiArmor != null)
+               {
+                  ship.Armor = wikiArmor;
+               }
+            });
+
+
+
+            await dropDb;
                 await context.Database.EnsureCreatedAsync();
 
                 foreach (var ship in shipData)
