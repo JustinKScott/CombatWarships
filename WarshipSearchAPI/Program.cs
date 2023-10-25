@@ -29,6 +29,9 @@ var app = builder.Build();
 
 app.UseMiddleware<GlobalExceptionHandler>();
 
+app.UseCors(options=>
+	options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
+);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -1,24 +1,35 @@
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
+using Serilog.Context;
 using WarshipSearchAPI.Data;
+using WarshipSearchAPI.DTO;
 using WarshipSearchAPI.Interfaces;
 
 namespace WarshipSearchAPI.Controllers
 {
 	[ApiController]
 	[Route("[controller]")]
-	public class WarshipSearchController : ControllerBase
+	public class SearchWarshipsController : ControllerBase
 	{
 		private readonly IWarshipDatabase _database;
 
-		public WarshipSearchController(IWarshipDatabase database)
+		public SearchWarshipsController(IWarshipDatabase database)
 		{
 			_database = database;
 		}
 
-		[HttpGet(Name = "SearchWarships")]
-		public IEnumerable<Ship> Get()
+		[HttpPost(Name = "Search")]
+		public IEnumerable<Ship> Search(ShipQuery query)
 		{
-			return _database.Ships.ToArray();
+			using (LogContext.PushProperty("Query", query))
+			{
+				Log.Information("Search Request");
+				var result = _database.Query(query);
+				Log.Information($"{result.Count()} results were found.");
+
+				// TODO: Send through automapper
+				return result;
+			}
+			}
 		}
-	}
 }
