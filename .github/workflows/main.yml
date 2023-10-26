@@ -5,7 +5,7 @@ on:
 
 env:
   AZURE_CONTAINER_REGISTRY: "warshipregistry"
-  CONTAINER_NAME: "combatwarships"
+  CONTAINER_NAME: "warshipssearchapi"
   RESOURCE_GROUP: "CombatWarships"
   DOCKER_PATH: "./WarshipSearchAPI/Dockerfile"
 
