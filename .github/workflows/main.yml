@@ -7,6 +7,7 @@ env:
   AZURE_CONTAINER_REGISTRY: "warshipregistry"
   CONTAINER_NAME: "warshipssearchapi"
   DOCKER_PATH: "./WarshipSearchAPI/Dockerfile"
+  CLUSTER_NAME: "aks_cluster"
 
 jobs:
   BuildImage:
