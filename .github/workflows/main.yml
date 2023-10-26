@@ -34,6 +34,10 @@ jobs:
           az acr build -f ${{env.DOCKER_PATH}} --image ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }} --registry ${{ env.AZURE_CONTAINER_REGISTRY }} -g ${{ env.RESOURCE_GROUP }} .
 
   Deploy-to-AKS:
+    permissions:
+      actions: read
+      contents: read
+      id-token: write
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
     needs: [BuildImage]    
