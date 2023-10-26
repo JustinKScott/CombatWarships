@@ -6,7 +6,6 @@ on:
 env:
   AZURE_CONTAINER_REGISTRY: "warshipregistry"
   CONTAINER_NAME: "warshipssearchapi"
-  RESOURCE_GROUP: "CombatWarships"
   DOCKER_PATH: "./WarshipSearchAPI/Dockerfile"
 
 jobs:
@@ -15,6 +14,8 @@ jobs:
       contents: read
       id-token: write
     runs-on: ubuntu-latest
+    env:
+      RESOURCE_GROUP: "CombatWarships"
     steps:
       # Checks out the repository this file is in
       - uses: actions/checkout@v3
@@ -35,7 +36,9 @@ jobs:
   Deploy-to-AKS:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
-    needs: [BuildImage]
+    needs: [BuildImage]    
+    env:
+      RESOURCE_GROUP: "CombatWarships_aks"
     steps:
     
       # Checks out the repository this file is in
