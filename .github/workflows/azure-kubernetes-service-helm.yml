@@ -41,7 +41,7 @@ on:
 
 env:
   AZURE_CONTAINER_REGISTRY: "warshipregistry"
-  CONTAINER_NAME: "WarshipSearchAPI"
+  CONTAINER_NAME: "JustinKScott.WarshipSearchAPI"
   RESOURCE_GROUP: "CombatWarships"
   CLUSTER_NAME: "aks_cluster"
   CHART_PATH: "Chart"
