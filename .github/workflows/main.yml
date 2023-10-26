@@ -1,6 +1,6 @@
 name: Container Workflow
 on:
- # push:
+  push:
   workflow_dispatch:
 
 env:
