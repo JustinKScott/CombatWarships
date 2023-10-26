@@ -8,7 +8,7 @@ using WarshipSearchAPI.Interfaces;
 namespace WarshipSearchAPI.Controllers
 {
 	[ApiController]
-	[Route("[controller]")]
+	[Route("api/[controller]")]
 	public class SearchWarshipsController : ControllerBase
 	{
 		private readonly IWarshipDatabase _database;

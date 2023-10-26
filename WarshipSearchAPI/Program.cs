@@ -5,7 +5,7 @@ using WarshipSearchAPI.Middleware;
 
 Log.Logger = new LoggerConfiguration()
 	.Enrich.FromLogContext()
-	.WriteTo.Seq("http://warship_seq:5341")
+	//.WriteTo.Seq("http://warship_seq:5341")
 	.WriteTo.Console()
 	.CreateLogger();
 
@@ -34,7 +34,7 @@ app.UseCors(options=>
 );
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+//if (app.Environment.IsDevelopment())
 {
 	app.UseSwagger();
 	app.UseSwaggerUI();
