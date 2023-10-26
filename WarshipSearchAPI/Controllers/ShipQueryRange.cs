@@ -11,17 +11,17 @@ namespace WarshipSearchAPI.Controllers
 	[ApiController]
 	public class ShipQueryRange : ControllerBase
 	{
-		private readonly IWarshipDatabase _database;
+		//private readonly IWarshipDatabase _database;
 
-		public ShipQueryRange(IWarshipDatabase database)
+		public ShipQueryRange()//IWarshipDatabase database)
 		{
-			_database = database;
+		//	_database = database;
 		}
 
 		[HttpGet(Name = "GetRanges")]
 		public QueryRange Get()
 		{
-			Log.Information("Get Ranges");
+			//Log.Information("Get Ranges");
 			//var result = _database.Query(query);
 			//Log.Information($"{result.Count()} results were found.");
 

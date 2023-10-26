@@ -3,16 +3,16 @@ using WarshipSearchAPI.Data;
 using WarshipSearchAPI.Interfaces;
 using WarshipSearchAPI.Middleware;
 
-Log.Logger = new LoggerConfiguration()
-	.Enrich.FromLogContext()
-	//.WriteTo.Seq("http://warship_seq:5341")
-	.WriteTo.Console()
-	.CreateLogger();
+//Log.Logger = new LoggerConfiguration()
+//	.Enrich.FromLogContext()
+//	//.WriteTo.Seq("http://warship_seq:5341")
+//	.WriteTo.Console()
+//	.CreateLogger();
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddScoped<IWarshipDatabase, WarshipDatabase>();
+//// Add services to the container.
+//builder.Services.AddScoped<IWarshipDatabase, WarshipDatabase>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -20,16 +20,16 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
-builder.Services.AddLogging(loggingBuilder =>
-{
-	loggingBuilder.AddSerilog(dispose: true);
-});
+//builder.Services.AddLogging(loggingBuilder =>
+//{
+//	loggingBuilder.AddSerilog(dispose: true);
+//});
 
 var app = builder.Build();
 
 app.UseMiddleware<GlobalExceptionHandler>();
 
-app.UseCors(options=>
+app.UseCors(options =>
 	options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
 );
 

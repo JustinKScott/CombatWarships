@@ -28,7 +28,7 @@ namespace WarshipSearchAPI.Middleware
         {
             var errorId = Guid.NewGuid();
 
-            Log.Fatal(ex, $"Fatal Exception: {errorId}");
+            //Log.Fatal(ex, $"Fatal Exception: {errorId}");
 
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
