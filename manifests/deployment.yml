@@ -17,7 +17,7 @@ spec:
      spec:
        containers:
          - name: warshipssearchapi
-           image: warshipregistry.azurecr.io/warshipssearchapi:f9e2f47da6a188ddbfe2600a929f9b62ef5141a2
+           image: warshipregistry.azurecr.io/__IMAGE_NAME__:__IMAGE_TAG__
            imagePullPolicy: Always
            ports:
              - containerPort: 80
