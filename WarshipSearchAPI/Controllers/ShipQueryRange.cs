@@ -21,7 +21,7 @@ namespace WarshipSearchAPI.Controllers
 		[HttpGet(Name = "GetRanges")]
 		public QueryRange Get()
 		{
-			//Log.Information("Get Ranges");
+			Log.Information("Get Ranges");
 			//var result = _database.Query(query);
 			//Log.Information($"{result.Count()} results were found.");
 

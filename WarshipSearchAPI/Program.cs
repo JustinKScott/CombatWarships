@@ -3,11 +3,11 @@ using WarshipSearchAPI.Data;
 using WarshipSearchAPI.Interfaces;
 using WarshipSearchAPI.Middleware;
 
-//Log.Logger = new LoggerConfiguration()
-//	.Enrich.FromLogContext()
-//	//.WriteTo.Seq("http://warship_seq:5341")
-//	.WriteTo.Console()
-//	.CreateLogger();
+Log.Logger = new LoggerConfiguration()
+	.Enrich.FromLogContext()
+	//	//.WriteTo.Seq("http://warship_seq:5341")
+	.WriteTo.Console()
+	.CreateLogger();
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,10 +20,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
-//builder.Services.AddLogging(loggingBuilder =>
-//{
-//	loggingBuilder.AddSerilog(dispose: true);
-//});
+builder.Services.AddLogging(loggingBuilder =>
+{
+	loggingBuilder.AddSerilog(dispose: true);
+});
 
 var app = builder.Build();
 

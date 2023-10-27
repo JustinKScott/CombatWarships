@@ -1,4 +1,4 @@
-name: Container Workflow
+name: Build & Deploy
 on:
   push:
   workflow_dispatch:
