@@ -5,25 +5,26 @@ metadata:
   labels:
     app: warshipssearchapi
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      service: warshipssearchapi
-  template:
-    metadata:
-      labels:
-        app: warshipssearchapi
-        service: warshipssearchapi
-    spec:
-      containers:
-        - name: warshipssearchapi
-          image: warshipregistry.azurecr.io/warshipssearchapi
-          imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: 80
-              protocol: TCP
-          env:
-            - name: ASPNETCORE_URLS
-              value: http://+:80
-            - name: WebApiBaseAddress
-              value: http://warshipssearchapi
+#   replicas: 1
+   selector:
+     matchLabels:
+       app: warshipssearchapi
+   template:
+     metadata:
+       labels:
+         app: warshipssearchapi
+         service: warshipssearchapi
+     spec:
+       containers:
+         - name: warshipssearchapi
+           image: warshipregistry.azurecr.io/warshipssearchapi:f9e2f47da6a188ddbfe2600a929f9b62ef5141a2
+           imagePullPolicy: Always
+           ports:
+             - containerPort: 80
+             - containerPort: 443
+               # protocol: TCP
+#           env:
+#             - name: ASPNETCORE_URLS
+#               value: http://+:80
+#             - name: WebApiBaseAddress
+#               value: http://warshipssearchapi
