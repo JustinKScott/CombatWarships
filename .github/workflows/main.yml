@@ -24,12 +24,11 @@ jobs:
 
       #substitute production appsettings entries to appsettings json file
       - name: App Settings Variable Substitution
-        uses: microsoft/variable-substitution@v2
+        uses: microsoft/variable-substitution@v1
         with:
           files: ${{ env.APPSETTINGS_PATH }}
         env:
-          ConnectionStrings.dbConnection: "GITHUB DB"
-          App.seqConnection: "GITHUB seq"
+          ConnectionStrings.DBConnection: ${{secrets.DBConnection}}
           
       # Logs in with your Azure credentials
       - name: Azure login

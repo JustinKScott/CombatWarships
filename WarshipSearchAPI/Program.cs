@@ -12,14 +12,11 @@ Log.Logger = new LoggerConfiguration()
 
 var builder = WebApplication.CreateBuilder(args);
 
-var dbConnection = builder.Configuration.GetConnectionString("dbConnection");
+var dbConnection = builder.Configuration.GetConnectionString("DBConnection");
 Log.Information($"DB Connection: {dbConnection}");
 
-var seqConnection = builder.Configuration.GetValue<string>("seqConnection");
-Log.Information($"SEQ Connection: {seqConnection}");
-
-//// Add services to the container.
-//builder.Services.AddScoped<IWarshipDatabase, WarshipDatabase>();
+// Add services to the container.
+builder.Services.AddScoped<IWarshipDatabase, WarshipDatabase>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -41,7 +38,7 @@ app.UseCors(options =>
 );
 
 // Configure the HTTP request pipeline.
-//if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())
 {
 	app.UseSwagger();
 	app.UseSwaggerUI();
