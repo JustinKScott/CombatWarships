@@ -7,6 +7,7 @@ env:
   AZURE_CONTAINER_REGISTRY: "warshipregistry"
   CONTAINER_NAME: "warshipssearchapi"
   DOCKER_PATH: "./WarshipSearchAPI/Dockerfile"
+  APPSETTINGS_PATH: "./WarshipSearchAPI/appsettings.json"
   CLUSTER_NAME: "aks"
 
 jobs:
@@ -23,9 +24,9 @@ jobs:
 
       #substitute production appsettings entries to appsettings json file
       - name: App Settings Variable Substitution
-        uses: microsoft/variable-substitution@v1
+        uses: microsoft/variable-substitution@v2
         with:
-          files: './WarshipSearchAPI/appsettings.json'
+          files: ${{ env.APPSETTINGS_PATH }}
         env:
           ConnectionStrings.dbConnection: "GITHUB DB"
           App.seqConnection: "GITHUB seq"
