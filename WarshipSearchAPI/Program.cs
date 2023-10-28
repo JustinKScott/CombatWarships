@@ -9,7 +9,14 @@ Log.Logger = new LoggerConfiguration()
 	.WriteTo.Console()
 	.CreateLogger();
 
+
 var builder = WebApplication.CreateBuilder(args);
+
+var dbConnection = builder.Configuration.GetConnectionString("dbConnection");
+Log.Information($"DB Connection: {dbConnection}");
+
+var seqConnection = builder.Configuration.GetValue<string>("seqConnection");
+Log.Information($"SEQ Connection: {seqConnection}");
 
 //// Add services to the container.
 //builder.Services.AddScoped<IWarshipDatabase, WarshipDatabase>();
@@ -20,10 +27,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
-builder.Services.AddLogging(loggingBuilder =>
-{
-	loggingBuilder.AddSerilog(dispose: true);
-});
+//builder.Services.AddLogging(loggingBuilder =>
+//{
+//	loggingBuilder.AddSerilog(dispose: true);
+//});
 
 var app = builder.Build();
 
